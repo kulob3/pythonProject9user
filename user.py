@@ -15,54 +15,57 @@
 
 class User:
     def __init__(self, name, password):
-        self.name = name
-        self.password = password
-        self.status = False
+        self.__name = name
+        self.__password = password
+        self.__status = False
         self.is_logged_in = True
-        self.is_admin = False
+        self.__is_admin = False
 
     @property
     def name(self):
-        return self.name
+        return self.__name
+
+    @name.setter
+    def name_new(self, name):
+        self.__name = name
 
     @property
     def password(self):
-        return self.password
+        return self.__password
 
     @password.setter
     def password_new(self, value):
-        self.password = value
+        self.__password = value
 
     @property
     def is_admin(self):
-        return self.status
+        return self.__status
 
     @is_admin.setter
     def _is_admin(self, value):
-        self.status = value
+        self.__status = value
 
     def login(self, password):
-        if password == self.password:
+        if password == self.__password:
             return True
         return False
 
     def logout(self):
-        if self.is_logged_in == True:
-            self.is_logged_in = False
+        self.is_logged_in = False
 
 
 
 # код для проверки
 user1 = User("Alice", "qwerty")
-print(user1.name)  # Alice
-print(user1.password)  # qwerty
-print(user1.is_admin)  # False
+# print(user1.name)  # Alice
+# print(user1.password)  # qwerty
+# print(user1.is_admin)  # False
 
 user1.password = "newpassword"
 print(user1.password)  # newpassword
-
-user1._is_admin = True
-print(user1.is_admin)  # True
-
-user1.login("newpassword")  # True
-user1.logout()
+#
+# user1._is_admin = True
+# print(user1.is_admin)  # True
+#
+# user1.login("newpassword")  # True
+# user1.logout()
